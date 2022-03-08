@@ -1,0 +1,45 @@
+{
+  "expo": {
+    "name": "Myapp",
+    "slug": "Myapp",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier":"com.uberclone",
+      "config":{
+        "googleMapsApiKey" :"AIzaSyDs2Rn0ImJXPlVa9OabLIQAOSE0aiffsWY"
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/icon.png",
+        "backgroundColor": "#FFFFFF"
+      },
+
+    "package":"com.hamanasi",
+    "config" :{
+      "googleMaps":{
+        "apiKey":"AIzaSyDs2Rn0ImJXPlVa9OabLIQAOSE0aiffsWY"
+      },
+      "permissions":["ACCESS_COARSE_LOCATION","ACCESS_FINE_LOCATION","FOREGROUND_SERVICE"]
+    }
+    
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    }
+  }
+}
