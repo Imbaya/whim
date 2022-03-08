@@ -6,10 +6,11 @@ import { Icon } from 'react-native-elements'
 import { filterData, carsAround } from '../global/data'
 import MapView, { PROVIDER_GOOGLE, } from 'react-native-maps'
 import {mapStyle} from "../global/mapStyle"
-const SCREEN_WIDTH = Dimensions.get('window').width
 import { colors,parameters } from '../global/styles'
 import { StatusBar } from 'expo-status-bar'
 import * as Location from 'expo-location'
+
+const SCREEN_WIDTH = Dimensions.get('window').width
 
 const HomeScreen = () => {
 
