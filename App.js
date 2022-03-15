@@ -10,7 +10,7 @@ const App = () => {
           <RootNavigator />
         </OriginContextProvider>
     </DestinationContextProvider>
-  //GEORGIADIS
+  //GEORGIADIS IMBAYA
   )
 }
 
