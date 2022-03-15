@@ -1,7 +1,7 @@
-import { StyleSheet, Text, View, Dimensions, ScrollView, Image, FlatList } from 'react-native'
+import { StyleSheet, Text, View, Dimensions, ScrollView, Image, FlatList, TouchableOpacity, Button } from 'react-native'
 import React,{ useState, useEffect, useRef } from 'react'
 import { Colors } from 'react-native/Libraries/NewAppScreen'
-import { color } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes'
+import { backgroundColor, color } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes'
 import { Icon } from 'react-native-elements'
 import { filterData, carsAround } from '../global/data'
 import MapView, { PROVIDER_GOOGLE, } from 'react-native-maps'
@@ -12,7 +12,7 @@ import * as Location from 'expo-location'
 
 const SCREEN_WIDTH = Dimensions.get('window').width
 
-const HomeScreen = () => {
+const HomeScreen = ({navigation}) => {
 
 const [latlng,setLatLng] = useState({})  
    
@@ -52,119 +52,32 @@ useEffect(()=>{
   console.log(latlng)
 ,[]})
   return (
-    <View style = {styles.container}>
-      <View style = {styles.header} >
-          <View style = {styles.icon1} >
-              <Icon type = "material-community"
-                    name = "menu"
-                    color = {colors.white}
-                    size = {40}
-              />
+    
+    <View   >
+             <View style = {styles.button1}></View>
+                <View style={{alignItems:"center",justifyContent:"center"}}> 
 
-          </View>
-      </View>
-      <ScrollView bounces = {false}>
-          <View style = {styles.home}>
-              <Text style = {styles.text1}>Distress your commute</Text>
               <View style = {styles.view1}>
-                  <View style  ={styles.view8}>
-                      <Text styles = {styles.text2}> Read a book. Take a nap. Stare out the window </Text>
-                      <View style = {styles.button1}>
-                          <Text style = {styles.button1Text}> HAMA NASI </Text>
+                <Icon
+                      type = "material-community"
+                      name = "menu"
+                      color = {colors.grey1}
+                      size = {35} 
+                      onPress ={()=>{navigation.navigate("RequestScreen",{state:0})}}
+                />
+                
+                 
+               
 
-                      </View>
-                  </View>
-                  <View>
-                      <Image 
-                         style = {styles.image1}
-                         source = {require('../../assets/uberCar.png')}
-                      />
-                  </View>
-              </View>
-          </View>
-          <View>
-                  <FlatList  
-                        numRows = {4}
-                        horizontal = {true}
-                        showsHorizontalScrollIndicator = {false}
-                        data = {filterData}
-                        keyExtractor = {(item)=>item.id}
-                        renderItem = { ({item})=>(
-                            <View style = {styles.card}>
-                                <View style = {styles.view2}>
-                                    <Image style = {styles.image2} source = {item.image} />
-                                </View>
-                                <View>
-                                    <Text style = {styles.title}>{item.name}</Text>
-                                </View>
-                            </View>
-                        )}
-                  />
-              </View>
-              <View style = {styles.view3}>
-                  <Text style = {styles.text3}> Where to ? </Text>
-                  <View style = {styles.view4}>
-                        <Icon type = "material-community"
-                            name = "clock-time-four"
-                            color = {colors.grey}
-                            size = {26}
-                        />
-                        <Text style = {{marginLeft:5}}>Now</Text>
-                        <Icon type = "material-community"
-                            name = "chevron-down"
-                            color = {colors.grey}
-                            size = {26}
-                        />
-                  </View>
-              </View>
-              <View style = {styles.view5}>
-                  <View style = {styles.view6}>
-                      <View style = {styles.view7}>
-                        <Icon type = "material-community"
-                                name = "map-marker"
-                                color = {colors.black}
-                                size = {22}
-                            />
-                      </View>
-                      <View>
-                        <Text style = {{fontSize:18,color:colors.black}}>Kisumu</Text>
-                        <Text style= {{color:color.grey3}}>Almran Plaza</Text>
-                      </View>
-                  </View>
-                  <View >
-                  <Icon type = "material-community"
-                                name = "chevron-right"
-                                color = {colors.grey}
-                                size = {26}
-                            />
-                  </View>
-              </View>
-              <View style = {{...styles.view5, borderBottomWidth:0}}>
-                  <View style = {styles.view6}>
-                      <View style = {styles.view7}>
-                        <Icon type = "material-community"
-                                name = "map-marker"
-                                color = {colors.black}
-                                size = {22}
-                            />
-                      </View>
-                      <View>
-                        <Text style = {{fontSize:18,color:colors.black}}>Kisumu</Text>
-                        <Text style= {{color:color.grey3}}>Migosi</Text>
-                      </View>
-                  </View>
-                  <View >
-                  <Icon type = "material-community"
-                                name = "chevron-right"
-                                color = {colors.grey}
-                                size = {26}
-                            />
-                  </View>
-              </View>
+                  
+            </View>
+            <View style = {styles.btn1} >
+              <Text style = {styles.txt1} onPress ={()=>{navigation.navigate("RequestScreen",{state:0})}}>HAMA NASI</Text>
+                </View>
 
-              <Text style = {styles.text4}> Around you</Text>
 
-              <View style={{alignItems:"center",justifyContent:"center"}}> 
+
+
                 <MapView
                     ref = {_map}
                     provider = {PROVIDER_GOOGLE}
@@ -174,9 +87,10 @@ useEffect(()=>{
                     followsUserLocation = {true}
                     initialRegion = {{...carsAround[0],latitudeDelta:0.008,longitudeDelta:0.008}}
                 >
+                    
 
-                    {carsAround.map((item)=>
-                    <MapView.Marker coordinate = {item}>
+                    {carsAround.map((item,index)=>
+                    <MapView.Marker coordinate = {item} key= {index.toString()}>
                         <Image 
                             source = {require('../../assets/carMarker.png')}
                             style = {styles.carsAround}
@@ -190,8 +104,10 @@ useEffect(()=>{
                     }
 
                 </MapView>
+                
+                
               </View>
-      </ScrollView>
+            
       <StatusBar style = "light" backgroundColor = "blue" translucent = {true} />
     </View>
   )
@@ -202,14 +118,9 @@ export default HomeScreen
 const styles = StyleSheet.create({
     
   container:{
-    flex:1,
-    backgroundColor:Colors.white,
-    paddingBottom:30,
-    paddingTop:parameters.statusBarHeight
+    flex:1
   },
   header:{
-
-    backgroundColor:"#2058c0",
     height:parameters.headerHeight,
     alignItems:"flex-start"
 
@@ -219,6 +130,15 @@ const styles = StyleSheet.create({
     height:100,
     width:100,
 
+  },
+
+  txt1:{
+    width:200,
+    paddingTop:1,
+    fontSize:20,
+    backgroundColor:"black",
+    height:30,
+    textAlign:"center"
   },
 
   image2:{height:60,width:60,
@@ -244,23 +164,43 @@ const styles = StyleSheet.create({
         },
 
         view1:{
-          flexDirection:"row",
-          flex:1,
-          paddingTop:30
+          position:"absolute",
+          top:50,
+          left:12,
+          backgroundColor:colors.grey,
+          height:40,
+          width:40,
+          borderRadius:20,
+          justifyContent:"center",
+          alignItems:"center",
+          marginTop:2, 
+          zIndex: 8
         },
-
+        btn1:{
+          
+          top:100,
+          left:12,
+          height:40,
+          width:300,
+          borderRadius:1,
+          justifyContent:"center",
+          alignItems:"center",
+          marginTop:2, 
+          zIndex: 8
+        },
         button1:{
           height:40,
-          width:150,
-          backgroundColor:Colors.black,
-          borderRadius:20,
+          width:300,
+          borderRadius:1,
           alignItems:"center",
           justifyContent:"center",
-          marginTop:20     
+          marginLeft: 100,
+          
    },
 
    button1Text:{
      color:Colors.white,
+     backgroundColor: colors.grey,
      fontSize:17,
      marginTop:-2
    },
@@ -331,9 +271,8 @@ const styles = StyleSheet.create({
           },
 
           map:{
-            height:500,
-            marginVertical:0,
-            width:SCREEN_WIDTH*0.92
+            height:"100%",
+            width: "100%"
           },
 
           text4:{
@@ -345,7 +284,8 @@ const styles = StyleSheet.create({
 
           icon1: {
             marginLeft:10,
-            marginTop:10
+            marginTop:30,
+            paddingTop:50
           },
           view8: {
             flex:4,
