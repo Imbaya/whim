@@ -9,6 +9,7 @@ const Home = createNativeStackNavigator();
 export  function HomeStack(){
     return(
         <Home.Navigator>
+        
             <Home.Screen
                 name = "HomeScreen"
                 component = {HomeScreen}
