@@ -176,6 +176,53 @@ const renderFlatListItems = useCallback(({item})=>(
                     <Text style = {styles.text9}>Enter destination later</Text>
                 </View>
          </View>
+         <TouchableOpacity>
+         <View style = {styles.view10}>
+                <Image
+                        style = {styles.image2}
+                        source = {require("../../assets/d9c73f381043ee7aa3af24f102d4bb1d.jpg")}
+                    />
+                 <View>
+                    <Text style = {styles.text7} > TUKTUK  </Text>
+                    <Text style = {styles.text6} > Time:                   Distance: </Text>
+                    <Text style = {styles.text6} >   </Text>
+                    <Text style = {styles.text1} > Fare : </Text>
+                    <Text style = {styles.text6} >   </Text>
+                </View>
+                
+            </View>
+            </TouchableOpacity>
+            <TouchableOpacity>
+            <View style = {styles.view10}>
+                <Image
+                        style = {styles.image2}
+                        source = {require("../../assets/OIP.jpg")}
+                    />
+                   <View >
+                <Text style = {styles.text7} > PICK-UP  </Text>
+                <Text style = {styles.text6} > Time:                   Distance: </Text>
+                <Text style = {styles.text6} >   </Text>
+                <Text style = {styles.text1} > Fare : </Text>
+                <Text style = {styles.text6} >   </Text>
+                </View>
+            </View>
+            </TouchableOpacity>
+
+            <TouchableOpacity>
+            <View style = {styles.view10}>
+                <Image
+                        style = {styles.image2}
+                        source = {require("../../assets/th.jpg")}
+                    />
+                  <View>
+                  <Text style = {styles.text7} > TRUCK  </Text>
+                <Text style = {styles.text6} > Time:                   Distance: </Text>
+                <Text style = {styles.text6} >   </Text>
+                <Text style = {styles.text1} > Fare : </Text>
+                <Text style = {styles.text6} >   </Text>
+             </View>
+            </View>
+            </TouchableOpacity>
          </View>
          }
           />
@@ -259,8 +306,9 @@ const styles = StyleSheet.create({
     },
       text1:{
           marginLeft:10,
-          fontSize:16,
-          color:colors.grey1
+          fontSize:20,
+          color:colors.grey1,
+          fontWeight:"bold"
       },
     
       image1:{  height:70,
@@ -282,10 +330,11 @@ const styles = StyleSheet.create({
         paddingVertical:10,
         borderBottomColor:colors.grey5,
         borderBottomWidth:1,
-        paddingHorizontal:20
+        paddingHorizontal:20,
+        paddingLeft:10
      },
      view11:{
-        backgroundColor:colors.grey,
+        backgroundColor:colors.black,
         height:30,
         width:30,
         borderRadius:30,
@@ -418,7 +467,7 @@ const styles = StyleSheet.create({
 
     icon:{paddingBottom:2},
 
-    image2:{height:60,width:60 },
+    image2:{height:80,width:80 },
 
     view20:{marginRight:10 },
 
@@ -426,6 +475,7 @@ const styles = StyleSheet.create({
         fontSize:15,
         color:colors.black,
         fontWeight:"bold", 
+        paddingLeft:10
     },
 
     view21:{
@@ -451,6 +501,8 @@ const styles = StyleSheet.create({
     fontSize:28,
     color:colors.black,
     marginRight:5,
+    fontWeight: "bold",
+    paddingLeft:5
  
 },
 
@@ -494,7 +546,9 @@ button2Image:{
 }
 ,
 text9:{fontSize:15,
-       color:colors.grey1
+       color:colors.grey1,
+       paddingLeft: 20
+    
     },
 
 

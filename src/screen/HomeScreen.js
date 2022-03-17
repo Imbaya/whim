@@ -63,7 +63,7 @@ useEffect(()=>{
                       name = "menu"
                       color = {colors.grey1}
                       size = {35} 
-                      onPress ={()=>{navigation.navigate("RequestScreen",{state:0})}}
+                      onPress={() => navigation.openDrawer()}
                 />
                 
                  
