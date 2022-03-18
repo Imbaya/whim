@@ -9,6 +9,7 @@ import {mapStyle} from "../global/mapStyle"
 import { colors,parameters } from '../global/styles'
 import { StatusBar } from 'expo-status-bar'
 import * as Location from 'expo-location'
+import { getStatusBarHeight } from 'react-native-status-bar-height'
 
 const SCREEN_WIDTH = Dimensions.get('window').width
 
@@ -53,8 +54,8 @@ useEffect(()=>{
 ,[]})
   return (
     
-    <View   >
-             <View style = {styles.button1}></View>
+    <View style = {styles.container}  >
+             
                 <View style={{alignItems:"center",justifyContent:"center"}}> 
 
               <View style = {styles.view1}>
@@ -62,7 +63,7 @@ useEffect(()=>{
                       type = "material-community"
                       name = "menu"
                       color = {colors.grey1}
-                      size = {35} 
+                      size = {45} 
                       onPress={() => navigation.openDrawer()}
                 />
                 
@@ -71,10 +72,11 @@ useEffect(()=>{
 
                   
             </View>
-            <View style = {styles.btn1} >
-              <Text style = {styles.txt1} onPress ={()=>{navigation.navigate("RequestScreen",{state:0})}}>HAMA NASI</Text>
+            <TouchableOpacity style = {styles.btn1} onPress ={()=>{navigation.navigate("RequestScreen",{state:0})}}>
+            <View  >
+              <Text style = {styles.txt1} >HAMA NASI</Text>
                 </View>
-
+                </TouchableOpacity>
 
 
 
@@ -118,7 +120,8 @@ export default HomeScreen
 const styles = StyleSheet.create({
     
   container:{
-    flex:1
+    flex:1,
+    paddingTop: 20
   },
   header:{
     height:parameters.headerHeight,
@@ -136,7 +139,9 @@ const styles = StyleSheet.create({
     width:200,
     paddingTop:1,
     fontSize:20,
-    backgroundColor:"black",
+    color:colors.grey1,
+          fontWeight:"bold",
+    
     height:30,
     textAlign:"center"
   },
@@ -165,11 +170,11 @@ const styles = StyleSheet.create({
 
         view1:{
           position:"absolute",
-          top:50,
+          top:Dimensions.get('window').height*0.025,
           left:12,
-          backgroundColor:colors.grey,
-          height:40,
-          width:40,
+          
+          height:50,
+          width:50,
           borderRadius:20,
           justifyContent:"center",
           alignItems:"center",
@@ -178,14 +183,15 @@ const styles = StyleSheet.create({
         },
         btn1:{
           
-          top:100,
-          left:12,
+          top:Dimensions.get('window').height*0.98,
+          left:Dimensions.get('window').width*0.015,
           height:40,
-          width:300,
-          borderRadius:1,
+          width:Dimensions.get('window').width*0.7,
+          borderRadius:10,
           justifyContent:"center",
           alignItems:"center",
           marginTop:2, 
+          backgroundColor:colors.grey,
           zIndex: 8
         },
         button1:{

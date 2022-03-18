@@ -24,6 +24,7 @@ const DestinationScreen = ({navigation}) => {
 
   return (
     <>
+    <View style = {styles.container}>
     <View style = {styles.view2}>
      <View style = {styles.view1}>
      <Icon
@@ -34,27 +35,9 @@ const DestinationScreen = ({navigation}) => {
                   onPress = {()=>{navigation.navigate("HomeScreen")}}
             />
         </View>
-       <TouchableOpacity>
-         <View style ={{top:50,alignItems:"center"}}>
-                <View style = {styles.view3}>
-                    <Avatar 
-                        rounded
-                        avatarStyle = {{}}
-                        size = {30}
-                        source = {require('../../assets/blankProfilePic.jpg')}
-                    />
-                    <Text style= {{marginLeft:5}}>For Someone</Text>
-                    <Icon
-                        type = "material-community"
-                        name = "chevron-down"
-                        color = {colors.grey1}
-                        size = {26}
-                    />
-                </View>
-             </View>
-         </TouchableOpacity>
+      
       </View>
-        
+        <View style = {styles.input}>
         { destination === false &&
 
          <GooglePlacesAutocomplete 
@@ -116,6 +99,11 @@ const DestinationScreen = ({navigation}) => {
         
             />
         }
+
+
+</View>
+
+        </View>
     </>
   )
 }
@@ -126,9 +114,13 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-        paddingTop:parameters.statusBarHeight
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        paddingTop:20
+    },
+
+    input: {
+      width: Dimensions.get('window').width*0.95
     },
     
     view1:{
@@ -157,9 +149,11 @@ const styles = StyleSheet.create({
       
     },
     
-    view2:{backgroundColor:colors.white,
+    view2:{backgroundColor:colors.grey6,
           zIndex:4,
           paddingBottom:10,
+          flexDirection: 'row',
+          justifyContent: 'space-between'
           
         },
     
@@ -189,18 +183,23 @@ const styles = StyleSheet.create({
         textInput:{
             backgroundColor: colors.grey6,
             height: 50,
+            
             borderRadius: 5,
             paddingVertical: 5,
             paddingHorizontal: 10,
             fontSize: 15,
             flex: 1,
             borderWidth:1,
-            marginHorizontal:15,
+            marginHorizontal:30,
+            borderColor: colors.grey6,
+            
+            
         },
         container: {
            paddingTop:50,
           flex: 1,
-          backgroundColor:colors.white
+          backgroundColor:colors.white,
+          
               },
       
         textInputContainer: {
