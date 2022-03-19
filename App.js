@@ -2,9 +2,9 @@ import { StyleSheet, Text, View, Dimensions } from 'react-native'
 import React from 'react'
 import { OriginContextProvider, DestinationContextProvider } from './src/context/contexts'
 import RootNavigator from './src/navigation/RootNavigator'
-import { useScreens } from 'react-native-screens';
+import { enableScreens } from 'react-native-screens';
 
-
+enableScreens();
 
 const App = () => {
   return (
