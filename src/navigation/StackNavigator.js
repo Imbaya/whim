@@ -3,27 +3,36 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from '../screen/HomeScreen'
 import RequestScreen from '../screen/RequestScreen';
 import DestinationScreen from '../screen/DestinationScreen';
+import ChargeScreen from '../screen/ChargeScreen';
 
 const Home = createNativeStackNavigator();
 
-export  function HomeStack(){
-    return(
+export function HomeStack() {
+    return (
         <Home.Navigator>
+
             <Home.Screen
-                name = "HomeScreen"
-                component = {HomeScreen}
-                options = {{headerShown:false}}
+                name="HomeScreen"
+                component={HomeScreen}
+                options={{ headerShown: false }}
             />
             <Home.Screen
-                name = "RequestScreen"
-                component = {RequestScreen}
-                options = {{headerShown:false}}
+                name="RequestScreen"
+                component={RequestScreen}
+                options={{ headerShown: false }}
             />
             <Home.Screen
-                name = "Destination"
-                component = {DestinationScreen}
-                options = {{headerShown:false}}
+                name="Destination"
+                component={DestinationScreen}
+                options={{ headerShown: false }}
             />
+
+            <Home.Screen
+                name="ChargeScreen"
+                component={ChargeScreen}
+                options={{ headerShown: false }}
+            />
+
         </Home.Navigator>
     )
 }
