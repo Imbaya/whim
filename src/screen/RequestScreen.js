@@ -6,8 +6,7 @@ import MapComponent from '../components/MapComponent'
 import { Avatar,Icon } from 'react-native-elements'
 import { OriginContext, DestinationContext } from '../context/contexts'
 import { rideData } from '../global/data'
-
-
+import {getDistance} from 'geolib';
 
 const SCREEN_HEIGHT = Dimensions.get('window').height;
 const SCREEN_WIDTH = Dimensions.get('window').width;
@@ -29,14 +28,25 @@ export default function RequestScreen({navigation,route}) {
      
      const handleSheetChange1 = useCallback((index)=>{},[])
 
-
-
 useEffect(()=>{
     setUserOrigin({latitude:origin.latitude,
         longitude:origin.longitude});
     setUserDestination({latitude:destination.latitude,
          longitude:destination.longitude})
 },[origin,destination])
+
+
+const dis = getDistance(
+    {latitude:origin.latitude,
+        longitude:origin.longitude},
+        {latitude:destination.latitude,
+            longitude:destination.longitude},
+  );
+
+  const Km = dis/1000;
+
+  const Time = Km/60 ;
+
 
 const renderFlatListItems = useCallback(({item})=>(
     <View>
@@ -184,7 +194,7 @@ const renderFlatListItems = useCallback(({item})=>(
                     />
                  <View>
                     <Text style = {styles.text7} > TUKTUK  </Text>
-                    <Text style = {styles.text6} > Time:                   Distance: </Text>
+                    <Text style = {styles.text6} > Time:                 Distance:  {Km} Km </Text>
                     <Text style = {styles.text6} >   </Text>
                     <Text style = {styles.text1} > Fare : </Text>
                     <Text style = {styles.text6} >   </Text>

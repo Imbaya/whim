@@ -1,4 +1,4 @@
-import { Text, StyleSheet, View, Image } from 'react-native'
+import { Text, StyleSheet, View, Image, Dimensions } from 'react-native'
 import React, { Component } from 'react'
 import {mapStyle} from "../global/mapStyle"
 import MapView, { PROVIDER_GOOGLE, } from 'react-native-maps';
@@ -6,6 +6,9 @@ import { colors, parameters } from '../global/styles';
 import MapViewDirections from 'react-native-maps-directions';
 import {GOOGLE_MAPS_APIKEY} from "@env";
 import { Colors } from 'react-native/Libraries/NewAppScreen';
+
+const SCREEN_HEIGHT = Dimensions.get('window').height;
+const SCREEN_WIDTH = Dimensions.get('window').width;
 
 export default class MapComponent extends Component {
 
@@ -30,11 +33,6 @@ export default class MapComponent extends Component {
       }
     },500)
   }
-
-
-
-
-
   render() {
     return (
       <View>
@@ -72,8 +70,9 @@ export default class MapComponent extends Component {
                           strokeWidth = {4}
                           strokeColor = {Colors.black}
                       />
-
                   }
+
+
           </MapView>
       </View>
     )
