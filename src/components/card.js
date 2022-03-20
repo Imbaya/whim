@@ -50,7 +50,7 @@ return (
                  />
               <View>
                  <Text style = {styles.text7} > TUKTUK  </Text>
-                 <Text style = {styles.text6} > Time:                   Distance: </Text>
+                 <Text style = {styles.text6} > Time:                   Distance:{props.distance} </Text>
                  <Text style = {styles.text6} >   </Text>
                  <Text style = {styles.text1} > Fare : </Text>
                  <Text style = {styles.text6} >   </Text>
@@ -209,7 +209,8 @@ const styles = StyleSheet.create({
       borderBottomColor:colors.grey5,
       borderBottomWidth:1,
       paddingHorizontal:20,
-      paddingLeft:10
+      paddingLeft:10,
+      
    },
    view11:{
       backgroundColor:colors.black,
