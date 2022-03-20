@@ -8,7 +8,7 @@ import { OriginContext, DestinationContext } from '../context/contexts'
 import { rideData } from '../global/data'
 import Card from '../components/card'
 import { color } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
-
+import { getDistance } from 'geolib';
 
 const SCREEN_HEIGHT = Dimensions.get('window').height;
 const SCREEN_WIDTH = Dimensions.get('window').width;
@@ -32,7 +32,17 @@ useEffect(()=>{
          longitude:destination.longitude})
 },[origin,destination])
 
+const dis = getDistance(
+  {latitude:origin.latitude,
+    longitude:origin.longitude},
+  {latitude:destination.latitude, 
+    longitude: destination.longitude},
+);
 
+const distance1 = dis/1000;
+ const fare1 = distance1*60 ;
+ const fare2 = distance1*100;
+ const fare3 = distance1*150;
                                                  
   return (
     <View style = {styles.container}>
@@ -50,7 +60,11 @@ useEffect(()=>{
 
       <MapComponent userOrigin = {userOrigin} userDestination = {userDestination} />
       
-      <Card style = {styles.view00} />
+      <Card style = {styles.view00} 
+            distance = {distance1} 
+            tuktuk = {fare1}
+             pick_up={fare2}
+              truck = {fare3} />
 
 </View>
 

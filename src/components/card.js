@@ -2,12 +2,7 @@ import { StyleSheet,Image, Text, View, Dimensions,TouchableOpacity } from 'react
 import React, {useContext, useState,useEffect,useRef,useMemo,useCallback} from 'react'
 import BottomSheet, { BottomSheetFlatList,BottomSheetSectionList } from '@gorhom/bottom-sheet';
 import { colors,parameters } from '../global/styles'
-import MapComponent from '../components/MapComponent'
-import { Avatar,Icon } from 'react-native-elements'
-import { OriginContext, DestinationContext } from '../context/contexts'
-import { rideData } from '../global/data'
-import RequestScreen from '../screen/RequestScreen';
-
+import {dis} from '../screen/ChargeScreen'
 
 const SCREEN_HEIGHT = Dimensions.get('window').height;
 const SCREEN_WIDTH = Dimensions.get('window').width;
@@ -18,6 +13,8 @@ const Card = props => {
   const snapPoints1 = useMemo(()=>["25%", "50%"],[])
   
   const handleSheetChange1 = useCallback((index)=>{},[])
+
+  
 
 // renders
 return (
@@ -50,9 +47,9 @@ return (
                  />
               <View>
                  <Text style = {styles.text7} > TUKTUK  </Text>
-                 <Text style = {styles.text6} > Time:                   Distance: </Text>
+                 <Text style = {styles.text6} > Time:                   Distance: {props.distance} Km </Text>
                  <Text style = {styles.text6} >   </Text>
-                 <Text style = {styles.text1} > Fare : </Text>
+                 <Text style = {styles.text1} > Fare : {props.tuktuk} Ksh </Text>
                  <Text style = {styles.text6} >   </Text>
              </View>
              
@@ -66,9 +63,9 @@ return (
                  />
                 <View >
              <Text style = {styles.text7} > PICK-UP  </Text>
-             <Text style = {styles.text6} > Time:                   Distance: </Text>
+             <Text style = {styles.text6} > Time:                   Distance:   {props.distance} Km </Text>
              <Text style = {styles.text6} >   </Text>
-             <Text style = {styles.text1} > Fare : </Text>
+             <Text style = {styles.text1} > Fare :    {props.pick_up} Ksh </Text>
              <Text style = {styles.text6} >   </Text>
              </View>
          </View>
@@ -82,9 +79,9 @@ return (
                  />
                <View>
                <Text style = {styles.text7} > TRUCK  </Text>
-             <Text style = {styles.text6} > Time:                   Distance: </Text>
+             <Text style = {styles.text6} > Time:                   Distance:   {props.distance} Km </Text>
              <Text style = {styles.text6} >   </Text>
-             <Text style = {styles.text1} > Fare : </Text>
+             <Text style = {styles.text1} > Fare :   {props.truck} Ksh </Text>
              <Text style = {styles.text6} >   </Text>
           </View>
          </View>
