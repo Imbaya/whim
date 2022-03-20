@@ -84,7 +84,7 @@ const HomeScreen = ({ navigation }) => {
           customMapStyle={mapStyle}
           showsUserLocation={true}
           followsUserLocation={true}
-          initialRegion={{ ...carsAround[0], latitudeDelta: 0.008, longitudeDelta: 0.008 }}
+          initialRegion={{ ...latlng, latitudeDelta: 0.01, longitudeDelta: 0.01 }}
         >
 
           {carsAround.map((item, index) =>
@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
  
 
   txt1: {
-    width: 200,
+    width: 250,
     paddingTop: 1,
     fontSize: 20,
     color: colors.grey1,

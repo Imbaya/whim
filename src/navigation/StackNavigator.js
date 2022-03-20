@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from '../screen/HomeScreen'
-import RequestScreen from '../screen/RequestScreen';
 import DestinationScreen from '../screen/DestinationScreen';
 import ChargeScreen from '../screen/ChargeScreen';
 
@@ -16,11 +15,7 @@ export function HomeStack() {
                 component={HomeScreen}
                 options={{ headerShown: false }}
             />
-            <Home.Screen
-                name="RequestScreen"
-                component={RequestScreen}
-                options={{ headerShown: false }}
-            />
+           
             <Home.Screen
                 name="Destination"
                 component={DestinationScreen}

@@ -86,6 +86,21 @@ export default function DrawerNavigator(){
                      
                 }}
             />
+            <Drawer.Screen
+                name = "Self-Service"
+                component = {HomeStack}
+                options = {{
+                    title:"Customer Care",
+                    drawerIcon : ({focused,size})=><Icon type="material-community" 
+                                                         name = "face-agent"
+                                                         color = {focused?'#7cc':colors.grey2}
+                                                         size = {size}
+                                                         
+                                                          />,  
+                     headerShown : false
+                     
+                }}
+            />
         </Drawer.Navigator>
     )
 }
