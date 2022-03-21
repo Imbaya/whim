@@ -1,12 +1,12 @@
-import { StyleSheet, Image, Text, View, Dimensions, TouchableOpacity } from 'react-native'
+import { StyleSheet, Image, Text, View, Dimensions, TouchableOpacity, FlatList } from 'react-native'
 import React, { useContext, useState, useEffect, useRef, useMemo, useCallback } from 'react'
 import BottomSheet, { BottomSheetFlatList, BottomSheetSectionList } from '@gorhom/bottom-sheet';
 import { colors, parameters } from '../global/styles'
 import MapComponent from '../components/MapComponent'
 import { Avatar, Icon } from 'react-native-elements'
 import { OriginContext, DestinationContext } from '../context/contexts'
-import { rideData } from '../global/data'
-import Card from '../components/card'
+import { carTypeData } from '../global/data'
+import VehicleTypeTile from '../components/VehicleTypeTile'
 import { color } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
 import { getDistance } from 'geolib';
 
@@ -15,6 +15,44 @@ const SCREEN_WIDTH = Dimensions.get('window').width;
 
 
 export default function ChargeScreen({ navigation, route }) {
+
+
+
+  const renderVehicleItem = itemData => {
+    return (
+      <VehicleTypeTile
+      image= {itemData.item.image}
+        vehicleType={itemData.item.vehicleType}
+        time={itemData.item.time}
+        distance={itemData.item.distance}
+        fare={itemData.item.fare}
+        onSelect={() => { navigation.navigate("TripDetail") }}
+
+
+
+
+        
+      //   onSelect={() => {
+      //   props.navigation.navigate({
+      //  routeName: 'CategoryMeals',
+      // params: {
+      //   categoryId: itemData.item.id
+      //   }
+      //   });
+      //  }}
+      />
+    );
+  };
+
+
+
+  const bottomSheet1 = useRef(1);
+
+  const snapPoints1 = useMemo(() => ["20%", "40%"], [])
+
+  const handleSheetChange1 = useCallback((index) => { }, [])
+
+
 
 
 
@@ -41,18 +79,24 @@ export default function ChargeScreen({ navigation, route }) {
   }, [origin, destination])
 
 
-const dis = getDistance(
-  {latitude:origin.latitude,
-    longitude:origin.longitude},
-  {latitude:destination.latitude, 
-    longitude: destination.longitude},
-);
+  const dis = getDistance(
+    {
+      latitude: origin.latitude,
+      longitude: origin.longitude
+    },
+    {
+      latitude: destination.latitude,
+      longitude: destination.longitude
+    },
+  );
 
-const distance1 = dis/1000;
- const fare1 = distance1*60 ;
- const fare2 = distance1*100;
- const fare3 = distance1*150;
-                                                 
+
+  //(Math.ceil(dis/1000)/5) * 5) ;
+  const distance1 = (Math.ceil(dis / 1000) / 5) * 5;
+  const fare1 = (Math.ceil(distance1 * 60) / 5) * 5;
+  const fare2 = (Math.ceil(distance1 * 150) / 5) * 5;
+  const fare3 = (Math.ceil(distance1 * 200) / 5) * 5;
+
   return (
     <View style={styles.container}>
 
@@ -67,22 +111,39 @@ const distance1 = dis/1000;
 
       </View>
 
-      <MapComponent userOrigin={userOrigin} userDestination={userDestination} />
+
+      <View style={styles.test}>
+        <MapComponent userOrigin={userOrigin} userDestination={userDestination} />
+
+      </View>
+
+
+      <BottomSheet
+        ref={bottomSheet1}
+        index={1}
+        snapPoints={snapPoints1}
+        onChange={handleSheetChange1}
+      >
+        <View style={styles.contentContainer}>
+
+
+          <BottomSheetFlatList
+            data={carTypeData}
+            keyExtractor={(item, index) => item.id}
+            renderItem={renderVehicleItem}
+     
+            numColumns={1}
+          />
 
 
 
-      
-      <Card style = {styles.view00} 
-            distance = {distance1} 
-            tuktuk = {fare1}
-             pick_up={fare2}
-              truck = {fare3} />
-
-
-
+        </View>
+      </BottomSheet>
 
 
     </View>
+
+
 
   )
 }
@@ -92,20 +153,21 @@ const styles = StyleSheet.create({
 
   contentContainer: {
     flex: 1,
-    alignItems: 'center',
+    alignItems: 'left',
+    width: '100%'
 
   },
   view10: {
-  //  alignItems: "center",
+    //  alignItems: "center",
     flex: 5,
-  //  flexDirection: "row",
+    //  flexDirection: "row",
     paddingVertical: 10,
     borderBottomColor: colors.grey5,
     borderBottomWidth: 1,
     paddingHorizontal: 20,
-  //  paddingLeft: 10,
-    
-    
+    //  paddingLeft: 10,
+
+
   },
 
   image2: { height: 80, width: 80 },
@@ -121,7 +183,10 @@ const styles = StyleSheet.create({
     //  borderBottomRightRadius: 300
   },
 
-
+  contentContainer: {
+    flex: 1,
+    alignItems: 'center',
+  },
   text6: {
     fontSize: 15,
     color: colors.black,
@@ -161,12 +226,18 @@ const styles = StyleSheet.create({
 
   view00: {
     width: Dimensions.get('window').width,
-    height: SCREEN_HEIGHT * 0.8,
+    height: '25%',
     position: "absolute",
-    bottom: 0
+    bottom: 0,
+    backgroundColor: 'blue',
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+
   },
 
-  test: {}
+  test: {
+    height: '80%'
+  }
 
 })
 

@@ -7,7 +7,7 @@ import {dis} from '../screen/ChargeScreen'
 const SCREEN_HEIGHT = Dimensions.get('window').height;
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
-const Card = props => {
+const BottomSht = props => {
   const bottomSheet1 = useRef(1);   
      
   const snapPoints1 = useMemo(()=>["25%", "50%"],[])
@@ -18,7 +18,7 @@ const Card = props => {
 
 // renders
 return (
-  <View style={{ ...styles.container, ...props.style }}>
+  <View style={styles.view00}>
     <BottomSheet
          ref={bottomSheet1}
          //index = {route.params.state}
@@ -39,53 +39,23 @@ return (
          
 
           
-      <TouchableOpacity>
+      <TouchableOpacity onPress={props.onSelect}>
       <View style = {styles.view10}>
              <Image
                      style = {styles.image2}
                      source = {require("../../assets/d9c73f381043ee7aa3af24f102d4bb1d.jpg")}
                  />
               <View>
-                 <Text style = {styles.text7} > TUKTUK  </Text>
-                 <Text style = {styles.text6} > Time:                   Distance: {props.distance} Km </Text>
+                 <Text style = {styles.text7} > {props.vehicleType}  </Text>
+                 <Text style = {styles.text6} > Time:  {props.time}  Distance: {props.distance} Km </Text>
                  <Text style = {styles.text6} >   </Text>
-                 <Text style = {styles.text1} > Fare : {props.tuktuk} Ksh </Text>
+                 <Text style = {styles.text1} > Fare : {props.fare} Ksh </Text>
                  <Text style = {styles.text6} >   </Text>
              </View>
              
          </View>
          </TouchableOpacity>
-         <TouchableOpacity>
-         <View style = {styles.view10}>
-             <Image
-                     style = {styles.image2}
-                     source = {require("../../assets/OIP.jpg")}
-                 />
-                <View >
-             <Text style = {styles.text7} > PICK-UP  </Text>
-             <Text style = {styles.text6} > Time:                   Distance:   {props.distance} Km </Text>
-             <Text style = {styles.text6} >   </Text>
-             <Text style = {styles.text1} > Fare :    {props.pick_up} Ksh </Text>
-             <Text style = {styles.text6} >   </Text>
-             </View>
-         </View>
-         </TouchableOpacity>
-
-         <TouchableOpacity>
-         <View style = {styles.view10}>
-             <Image
-                     style = {styles.image2}
-                     source = {require("../../assets/th.jpg")}
-                 />
-               <View>
-               <Text style = {styles.text7} > TRUCK  </Text>
-             <Text style = {styles.text6} > Time:                   Distance:   {props.distance} Km </Text>
-             <Text style = {styles.text6} >   </Text>
-             <Text style = {styles.text1} > Fare :   {props.truck} Ksh </Text>
-             <Text style = {styles.text6} >   </Text>
-          </View>
-         </View>
-         </TouchableOpacity>
+       
       </View>
       }
        />
@@ -100,6 +70,16 @@ const styles = StyleSheet.create({
       flex:1,
       
   },
+
+
+  view00: {
+    width: Dimensions.get('window').width,
+    height: SCREEN_HEIGHT * 0.8,
+    position: "absolute",
+    bottom: 0
+  },
+
+
   container:{
       flex:1,
       paddingTop:parameters.statusBarHeight,
@@ -477,4 +457,4 @@ text9:{fontSize:15,
   
 });
 
-export default Card;
+export default BottomSht;
