@@ -26,7 +26,7 @@ export default function ChargeScreen({ navigation, route }) {
         time={itemData.item.time}
         distance={itemData.item.distance}
         fare={itemData.item.fare}
-        onSelect={() => { navigation.navigate("TripDetail") }}
+        onSelect={() => { navigation.navigate("TripDetail" ,  { id: itemData.item.id }) }}
 
 
 
