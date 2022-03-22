@@ -1,14 +1,11 @@
-import React, { useState,useContext,useEffect } from 'react';
+import React, { useContext, useState, useEffect, useRef, useMemo, useCallback } from 'react'
 import { StyleSheet, View, Dimensions, Text, TouchableOpacity, Image } from 'react-native';
-
-import { OriginContext, DestinationContext } from '../context/contexts'
+import BottomSheet, { BottomSheetFlatList, BottomSheetSectionList } from '@gorhom/bottom-sheet';
 import { colors, parameters } from '../global/styles'
 import MapComponent from '../components/MapComponent'
-
+import { OriginContext, DestinationContext } from '../context/contexts'
 const TripDetailScreen = ( { route: { params } }) => {
 
-
-  
    const { id } = params;
     
    const { origin, dispatchOrigin } = useContext(OriginContext)
@@ -34,7 +31,12 @@ const TripDetailScreen = ( { route: { params } }) => {
    }, [origin, destination])
  
 
-   
+   const bottomSheet1 = useRef(1);
+
+  const snapPoints1 = useMemo(() => ["5%", "30%"], [])
+
+  const handleSheetChange1 = useCallback((index) => { }, [])
+
 
 
     return (
@@ -44,29 +46,17 @@ const TripDetailScreen = ( { route: { params } }) => {
                <MapComponent  userOrigin={userOrigin} userDestination={userDestination} />
            </View>
 
-           <View style = {styles.driverview}>
-
-
-           <View style = {styles.view10}>
-             
-           <Image
-                     style = {styles.image2}
-                     source = {require("../../assets/d9c73f381043ee7aa3af24f102d4bb1d.jpg")}
-                 />
-
-              <View>
-                 <Text style = {styles.text7} > place  </Text>
-                 <Text style = {styles.text6} > Time:      Distance:  Km </Text>
-                 <Text style = {styles.text6} >   </Text>
-                 <Text style = {styles.text1} > Fare :  Ksh </Text>
-                 <Text style = {styles.text6} >   </Text>
-             </View>
-             
-         </View>
+           <BottomSheet
+        ref={bottomSheet1}
+        index={1}
+        snapPoints={snapPoints1}
+        onChange={handleSheetChange1}
+      >
 
 
 
-           </View>
+
+          </BottomSheet>
 
 
 
@@ -99,7 +89,7 @@ const styles = StyleSheet.create({
       },
 
    mapview:{
-       height: '60%',
+       height: '100%',
        
    },
 
