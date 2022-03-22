@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState,useContext,useEffect } from 'react';
 import { StyleSheet, View, Dimensions, Text, TouchableOpacity, Image } from 'react-native';
 
+import { OriginContext, DestinationContext } from '../context/contexts'
 import { colors, parameters } from '../global/styles'
-
+import MapComponent from '../components/MapComponent'
 
 const TripDetailScreen = ( { route: { params } }) => {
 
@@ -10,6 +11,28 @@ const TripDetailScreen = ( { route: { params } }) => {
   
    const { id } = params;
     
+   const { origin, dispatchOrigin } = useContext(OriginContext)
+   const [userOrigin, setUserOrigin] = useState({
+     latitude: origin.latitude,
+     longitude: origin.longitude
+   })
+   const { destination, dispatchDestination } = useContext(DestinationContext)
+   const [userDestination, setUserDestination] = useState({
+     latitude: destination.latitude,
+     longitude: destination.longitude
+   })
+ 
+   useEffect(() => {
+     setUserOrigin({
+       latitude: origin.latitude,
+       longitude: origin.longitude
+     });
+     setUserDestination({
+       latitude: destination.latitude,
+       longitude: destination.longitude
+     })
+   }, [origin, destination])
+ 
 
    
 
@@ -18,7 +41,7 @@ const TripDetailScreen = ( { route: { params } }) => {
         <View style={styles.screen}>
 
            <View style = {styles.mapview}>
-               
+               <MapComponent  userOrigin={userOrigin} userDestination={userDestination} />
            </View>
 
            <View style = {styles.driverview}>
