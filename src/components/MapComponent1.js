@@ -6,8 +6,7 @@ import { colors, parameters } from '../global/styles';
 import MapViewDirections from 'react-native-maps-directions';
 import {GOOGLE_MAPS_APIKEY} from "@env";
 import { Colors } from 'react-native/Libraries/NewAppScreen';
-import { carsAround1 } from '../global/data'
-
+import { filterData, carsAround } from '../global/data'
 
 const SCREEN_HEIGHT = Dimensions.get('window').height;
 const SCREEN_WIDTH = Dimensions.get('window').width;
@@ -74,17 +73,17 @@ export default class MapComponent extends Component {
                       />
                   }
 
-                  {carsAround1.map((item, index) =>
-                    <MapView.Marker coordinate={item} key={index.toString()}>
-                    <Image
-                        source={require('../../assets/carMarker.png')}
-                        style={styles.carsAround}
-                        resizeMode="cover"
-                    />
-                    </MapView.Marker>
+                {carsAround.map((item, index) =>
+                <MapView.Marker coordinate={item} key={index.toString()}>
+                <Image
+                    source={require('../../assets/carMarker.png')}
+                    style={styles.carsAround}
+                    resizeMode="cover"
+                />
+                </MapView.Marker>
 
-                    )
-                    }
+                )
+                }
 
 
           </MapView>
@@ -197,9 +196,9 @@ borderRadius:4,
 backgroundColor:"white"
 },
 carsAround: {
-  width: 28,
-  height: 14,
+    width: 28,
+    height: 14,
 
-}     
+  },     
 
 })

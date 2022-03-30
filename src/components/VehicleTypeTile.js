@@ -2,7 +2,6 @@ import { StyleSheet,Image, Text, View, Dimensions,TouchableOpacity } from 'react
 import React, {useContext, useState,useEffect,useRef,useMemo,useCallback} from 'react'
 import BottomSheet, { BottomSheetFlatList,BottomSheetSectionList } from '@gorhom/bottom-sheet';
 import { colors,parameters } from '../global/styles'
-import {dis} from '../screen/ChargeScreen'
 
 const SCREEN_HEIGHT = Dimensions.get('window').height;
 const SCREEN_WIDTH = Dimensions.get('window').width;

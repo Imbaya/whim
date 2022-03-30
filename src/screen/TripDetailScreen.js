@@ -43,7 +43,7 @@ const TripDetailScreen = ( { route: { params } }) => {
         <View style={styles.screen}>
 
            <View style = {styles.mapview}>
-               <MapComponent  userOrigin={userOrigin} userDestination={userDestination} />
+               <MapComponent  userOrigin={userOrigin} userDestination={userDestination}  />
            </View>
 
            <BottomSheet

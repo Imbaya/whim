@@ -2,7 +2,7 @@ import { StyleSheet, Image, Text, View, Dimensions, TouchableOpacity, FlatList }
 import React, { useContext, useState, useEffect, useRef, useMemo, useCallback } from 'react'
 import BottomSheet, { BottomSheetFlatList, BottomSheetSectionList } from '@gorhom/bottom-sheet';
 import { colors, parameters } from '../global/styles'
-import MapComponent from '../components/MapComponent'
+import MapComponent from '../components/MapComponent1'
 import { Avatar, Icon } from 'react-native-elements'
 import { OriginContext, DestinationContext } from '../context/contexts'
 import { carTypeData } from '../global/data'
@@ -237,7 +237,8 @@ const styles = StyleSheet.create({
 
   test: {
     height: '80%'
-  }
+  },
+  
 
 })
 
