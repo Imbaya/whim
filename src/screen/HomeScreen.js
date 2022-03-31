@@ -1,4 +1,5 @@
 import { StyleSheet, Text, View, Dimensions, StatusBar, Image, FlatList, TouchableOpacity, Button } from 'react-native'
+//import { TouchableOpacity } from 'react-native-gesture-handler';
 import BottomSheet, { BottomSheetFlatList, BottomSheetSectionList } from '@gorhom/bottom-sheet';
 import React, { useContext, useState, useEffect, useRef, useMemo, useCallback } from 'react'
 import { Icon } from 'react-native-elements'
@@ -103,9 +104,10 @@ const HomeScreen = ({ navigation }) => {
 
        
      
-        <TouchableOpacity style={styles.buttonview} onPress={() => { navigation.navigate("Destination", { state: 0 }) }}>
+       
          
          <Card style={styles.rqstbtn}>
+         <TouchableOpacity style={styles.buttonview}       onPress={() => { navigation.navigate("Destination", { state: 0 }) }}>
         <View style= {styles.buttoncontent}>
         <Image
                         source={require('../../assets/OIP.jpg')}
@@ -116,10 +118,10 @@ const HomeScreen = ({ navigation }) => {
 <TitleText>Transport with Us</TitleText>
 </View>
 </View>
-
+</TouchableOpacity>
          </Card>
 
-         </TouchableOpacity>
+         
         
       </View>
 
@@ -158,7 +160,7 @@ const styles = StyleSheet.create({
 
  
 buttonview: {
-  
+  flex: 1,
   alignItems: 'center'
 },
 
@@ -182,7 +184,7 @@ buttonview: {
     flex: 1,
     position: 'absolute',
     bottom: Dimensions.get('window').width * 0.06,
-   
+    zIndex: 30,
     width: Dimensions.get('window').width * 0.7,
  
     borderRadius: 100,
