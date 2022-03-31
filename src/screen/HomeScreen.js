@@ -1,7 +1,6 @@
 import { StyleSheet, Text, View, Dimensions, ScrollView, Image, FlatList, TouchableOpacity, Button } from 'react-native'
 import React, { useState, useEffect, useRef } from 'react'
 import { Icon } from 'react-native-elements'
-import { filterData, carsAround } from '../global/data'
 import MapView, { PROVIDER_GOOGLE, } from 'react-native-maps'
 import { mapStyle } from "../global/mapStyle"
 import { colors, parameters } from '../global/styles'
@@ -85,20 +84,10 @@ const HomeScreen = ({ navigation }) => {
           customMapStyle={mapStyle}
           showsUserLocation={true}
           followsUserLocation={true}
-          initialRegion={{ ...latlng, latitudeDelta: 0.01, longitudeDelta: 0.01 }}
+          
         >
-
-          {carsAround.map((item, index) =>
-            <MapView.Marker coordinate={item} key={index.toString()}>
-              <Image
-                source={require('../../assets/carMarker.png')}
-                style={styles.carsAround}
-                resizeMode="cover"
-              />
-            </MapView.Marker>
-
-          )
-          }
+           
+        
     
         </MapView>
      

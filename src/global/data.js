@@ -55,3 +55,18 @@ export const carsAround = [{latitude:-0.0103090,longitude:34.756060},
     {latitude:-0.112141,longitude:34.753012},
     {latitude:-0.101412,longitude:34.753441},
 ]
+export const carsAround1 = [{latitude:-0.0103090,longitude:34.756060}
+]
+
+export const Rides = [
+    {id:"1",CarTypeDataId:"2",proximity:"15",IsIdle:0,  name:"Jones" ,phoneNumber:"0793831331", latitude:-0.107805,longitude:34.755936},
+    {id:"1",CarTypeDataId:"3",proximity:"20",IsIdle:1,   name:"Kim" , phoneNumber:"0112983323",latitude:-0.107805,longitude:34.755936},
+    {id:"1",CarTypeDataId:"1", proximity:"1",IsIdle:0 , name:"Kelly" ,phoneNumber:"2123213223", latitude:-0.107805,longitude:34.755936},
+    {id:"2",CarTypeDataId:"3", proximity:"6",IsIdle:1, name:"Lont" ,phoneNumber:"21321321323", latitude:-0.107805,longitude:34.755936},
+    {id:"2",CarTypeDataId:"2", proximity:"16",IsIdle:0, name:"Kent" ,phoneNumber:"213121321323", latitude:-0.107805,longitude:34.755936},
+    {id:"2",CarTypeDataId:"1", proximity:"4",IsIdle:1, name:"Laura" ,phoneNumber:"21322131323", latitude:-0.107805,longitude:34.755936},
+    {id:"3",CarTypeDataId:"3", proximity:"2",IsIdle:1, name:"Lynne" ,phoneNumber:"21321321323", latitude:-0.107805,longitude:34.755936},
+    {id:"3",CarTypeDataId:"1", proximity:"56",IsIdle:0, name:"Lowi" ,phoneNumber:"21324431323", latitude:-0.107805,longitude:34.755936}
+
+
+]
