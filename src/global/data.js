@@ -67,6 +67,4 @@ export const Rides = [
     {id:"2",CarTypeDataId:"1", proximity:"4",IsIdle:1, name:"Laura" ,phoneNumber:"21322131323", latitude:-0.107805,longitude:34.755936},
     {id:"3",CarTypeDataId:"3", proximity:"2",IsIdle:1, name:"Lynne" ,phoneNumber:"21321321323", latitude:-0.107805,longitude:34.755936},
     {id:"3",CarTypeDataId:"1", proximity:"56",IsIdle:0, name:"Lowi" ,phoneNumber:"21324431323", latitude:-0.107805,longitude:34.755936}
-
-
 ]
