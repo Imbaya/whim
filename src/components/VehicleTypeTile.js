@@ -74,10 +74,11 @@ const styles = StyleSheet.create({
         flex: 5,
         flexDirection: "row",
         paddingVertical: 10,
-        borderBottomColor: colors.grey5,
+        borderBottomColor: colors.grey,
         borderBottomWidth: 1,
         paddingHorizontal: 20,
         paddingLeft: 10,
+        paddingRight:10,
         height: '100%'
 
     },

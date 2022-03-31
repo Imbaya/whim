@@ -4,6 +4,10 @@ import BottomSheet, { BottomSheetFlatList, BottomSheetSectionList } from '@gorho
 import { colors, parameters } from '../global/styles'
 import MapComponent from '../components/MapComponent'
 import { OriginContext, DestinationContext } from '../context/contexts'
+import BodyText from '../components/BodyText'
+import TitleText from '../components/TitleText'
+
+
 const TripDetailScreen = ({ route: { params } }) => {
 
     const { id } = params;
@@ -52,12 +56,12 @@ const TripDetailScreen = ({ route: { params } }) => {
                 snapPoints={snapPoints1}
                 onChange={handleSheetChange1}
             >
- <View style= {styles.statusview}>
-                        <Text>Your Driver is on the way</Text>
-                    </View>
+                <View style={styles.statusview}>
+                    <TitleText>Your Driver is on the way</TitleText>
+                </View>
 
                 <View style={styles.product}>
-                   
+
 
 
                     <Image
@@ -71,11 +75,11 @@ const TripDetailScreen = ({ route: { params } }) => {
 
 
 
-                        <Text style={styles.textstyle}>Driver's Name:</Text>
-                        <Text style={styles.textstyle}>Vehicle Model:</Text>
-                        <Text style={styles.textstyle}>Registration n.o:</Text>
-                        <Text style={styles.textstyle}>Phone number:</Text>
-                        <Text style={styles.textstyle}>Rating:</Text>
+                        <TitleText style={styles.textstyle}>Driver's Name: John</TitleText>
+                        <TitleText style={styles.textstyle}>Vehicle Model: Toyota Hilux</TitleText>
+                        <TitleText style={styles.textstyle}>Registration n.o: KCG 199U</TitleText>
+                        <TitleText style={styles.textstyle}>Phone number: 0715222222</TitleText>
+                        <TitleText style={styles.textstyle}>Rating: 4.5/5</TitleText>
 
                     </View>
 
@@ -101,13 +105,15 @@ const styles = StyleSheet.create({
     },
 
     statusview: {
-alignItems: 'center',
-paddingBottom: 10
+        alignItems: 'center',
+        paddingBottom: 10
     },
 
 
     textstyle: {
-        paddingTop: 10
+        paddingTop: 10,
+        color: 'black',
+fontWeight: '900'
     },
 
     product: {
@@ -128,7 +134,7 @@ paddingBottom: 10
     image: {
         width: Dimensions.get('window').width * 0.35,
         height: Dimensions.get('window').width * 0.35,
-        borderRadius:150
+        borderRadius: 150
     },
 
     image2: { height: 80, width: 80 },

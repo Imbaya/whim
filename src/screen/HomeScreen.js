@@ -7,7 +7,8 @@ import { mapStyle } from "../global/mapStyle"
 import { colors, parameters } from '../global/styles'
 import { StatusBar } from 'expo-status-bar'
 import * as Location from 'expo-location'
-import { BlurView } from 'expo-blur';
+import BodyText from '../components/BodyText'
+import TitleText from '../components/TitleText'
 
 const SCREEN_WIDTH = Dimensions.get('window').width
 
@@ -62,16 +63,16 @@ const HomeScreen = ({ navigation }) => {
           <Icon
             type="material-community"
             name="menu"
-            color={colors.grey1}
+            color={colors.blue}
             size={45}
             onPress={() => navigation.openDrawer()}
           />
 
         </View>
         <View style={styles.test}></View>
-        <TouchableOpacity style={styles.btn1} onPress={() => { navigation.navigate("Destination", { state: 0 }) }}>
+        <TouchableOpacity style={styles.btn} onPress={() => { navigation.navigate("Destination", { state: 0 }) }}>
           <View  >
-            <Text style={styles.txt1} >TRANSPORT WITH US</Text>
+           < TitleText style={styles.txt} >TRANSPORT WITH US</ TitleText>
           </View>
         </TouchableOpacity>
 
@@ -101,7 +102,9 @@ const HomeScreen = ({ navigation }) => {
     
         </MapView>
      
-        
+        <View style= {styles.bottom}>
+
+        </View>
         
       </View>
 
@@ -115,6 +118,12 @@ export default HomeScreen
 
 const styles = StyleSheet.create({
 
+bottom: {
+  zIndex: 8,
+
+},
+
+
   container: {
     flex: 1,
     paddingTop: 20,
@@ -123,11 +132,11 @@ const styles = StyleSheet.create({
 
  
 
-  txt1: {
+  txt: {
     width: 250,
     paddingTop: 1,
     fontSize: 20,
-    color: colors.grey1,
+    color: colors.white,
     fontWeight: "bold",
     height: 30,
     textAlign: "center"
@@ -146,7 +155,7 @@ const styles = StyleSheet.create({
     zIndex: 8
   },
 
-  btn1: {
+  btn: {
     top: Dimensions.get('window').height * 0.98,
     left: Dimensions.get('window').width * 0.015,
     height: 40,
@@ -155,7 +164,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     marginTop: 2,
-    backgroundColor: colors.grey,
+    backgroundColor: colors.blue,
+
     zIndex: 8
   },
 

@@ -33,7 +33,7 @@ const DestinationScreen = ({ navigation }) => {
               <Icon
                 type="material-community"
                 name="arrow-left"
-                color={colors.grey1}
+                color={colors.blue}
                 size={35}
 
               />
@@ -130,7 +130,8 @@ const styles = StyleSheet.create({
   },
 
   input: {
-    width: Dimensions.get('window').width * 0.95
+    width: Dimensions.get('window').width * 0.95,
+    borderColor: 'blue'
   },
 
   view1: {
