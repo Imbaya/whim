@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, StyleSheet } from 'react-native';
+import { Text, StyleSheet, Dimensions } from 'react-native';
 
 
 const TitleText = props => (
@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
 
   title: {
     fontFamily: 'proxima-bold',
-    fontSize: 20
+   fontSize:   Dimensions.get('window').width * 0.065
   }
 
 });

@@ -1,11 +1,13 @@
-import { StyleSheet, Text, View, Dimensions, ScrollView, Image, FlatList, TouchableOpacity, Button } from 'react-native'
-import React, { useState, useEffect, useRef } from 'react'
+import { StyleSheet, Text, View, Dimensions, StatusBar, Image, FlatList, TouchableOpacity, Button } from 'react-native'
+import BottomSheet, { BottomSheetFlatList, BottomSheetSectionList } from '@gorhom/bottom-sheet';
+import React, { useContext, useState, useEffect, useRef, useMemo, useCallback } from 'react'
 import { Icon } from 'react-native-elements'
 import MapView, { PROVIDER_GOOGLE, } from 'react-native-maps'
 import { mapStyle } from "../global/mapStyle"
 import { colors, parameters } from '../global/styles'
-import { StatusBar } from 'expo-status-bar'
+//import { StatusBar } from 'expo-status-bar'
 import * as Location from 'expo-location'
+import Card from '../components/card'
 import BodyText from '../components/BodyText'
 import TitleText from '../components/TitleText'
 
@@ -51,29 +53,37 @@ const HomeScreen = ({ navigation }) => {
     console.log(latlng)
       , []
   })
+
+
+  const bottomSheet1 = useRef(1);
+
+  const snapPoints1 = useMemo(() => ["5%", "25%"], [])
+
+  const handleSheetChange1 = useCallback((index) => { }, [])
+
+
+
   return (
 
     <View style={styles.container}  >
+
+
       
 
       <View style={{ alignItems: "center", justifyContent: "center" }}>
 
-        <View style={styles.view1}>
+        <View style={styles.icon}>
           <Icon
             type="material-community"
             name="menu"
-            color={colors.blue}
+            color={colors.black}
             size={45}
             onPress={() => navigation.openDrawer()}
           />
 
         </View>
-        <View style={styles.test}></View>
-        <TouchableOpacity style={styles.btn} onPress={() => { navigation.navigate("Destination", { state: 0 }) }}>
-          <View  >
-           < TitleText style={styles.txt} >TRANSPORT WITH US</ TitleText>
-          </View>
-        </TouchableOpacity>
+     
+       
 
 
       
@@ -90,14 +100,30 @@ const HomeScreen = ({ navigation }) => {
         
     
         </MapView>
-     
-        <View style= {styles.bottom}>
 
-        </View>
+       
+     
+        <TouchableOpacity style={styles.buttonview} onPress={() => { navigation.navigate("Destination", { state: 0 }) }}>
+         
+         <Card style={styles.rqstbtn}>
+        <View style= {styles.buttoncontent}>
+        <Image
+                        source={require('../../assets/OIP.jpg')}
+                        style={styles.image}
+                        resizeMode="cover" />
+
+                        <View>
+<TitleText>Transport with Us</TitleText>
+</View>
+</View>
+
+         </Card>
+
+         </TouchableOpacity>
         
       </View>
 
-      <StatusBar style="light" backgroundColor="white" translucent={true} />
+      
 
     </View>
   )
@@ -107,33 +133,39 @@ export default HomeScreen
 
 const styles = StyleSheet.create({
 
-bottom: {
-  zIndex: 8,
 
-},
 
 
   container: {
     flex: 1,
-    paddingTop: 20,
+    
     
   },
 
- 
 
-  txt: {
-    width: 250,
-    paddingTop: 1,
-    fontSize: 20,
-    color: colors.white,
-    fontWeight: "bold",
-    height: 30,
-    textAlign: "center"
+  image: {
+    width: Dimensions.get('window').width * 0.09,
+    height: Dimensions.get('window').width * 0.09,
+    borderRadius: 150
+},
+
+
+  buttoncontent: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    justifyContent: 'space-around',
   },
 
-  view1: {
+ 
+buttonview: {
+  
+  alignItems: 'center'
+},
+
+
+  icon: {
     position: "absolute",
-    top: Dimensions.get('window').height * 0.025,
+    top: Dimensions.get('window').height * 0.03,
     left: 12,
     height: 50,
     width: 50,
@@ -141,26 +173,30 @@ bottom: {
     justifyContent: "center",
     alignItems: "center",
     marginTop: 2,
-    zIndex: 8
+    zIndex: 8,
+   
   },
 
-  btn: {
-    top: Dimensions.get('window').height * 0.98,
-    left: Dimensions.get('window').width * 0.015,
-    height: 40,
+
+  rqstbtn  : {
+    flex: 1,
+    position: 'absolute',
+    bottom: Dimensions.get('window').width * 0.06,
+   
     width: Dimensions.get('window').width * 0.7,
-    borderRadius: 10,
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: 2,
-    backgroundColor: colors.blue,
+ 
+    borderRadius: 100,
+    height: Dimensions.get('window').width * 0.11,
+},
 
-    zIndex: 8
-  },
+
+
+
+ 
 
   map: {
-    height: "100%",
-    width: "100%",
+    height: Dimensions.get('window').height,
+    width: Dimensions.get('window').width,
    
   },
 

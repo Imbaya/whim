@@ -46,15 +46,9 @@ const TripDetailScreen = ({ route: { params } }) => {
     return (
         <View style={styles.screen}>
 
-<<<<<<< HEAD
-            <View style={styles.mapview}>
-                <MapComponent userOrigin={userOrigin} userDestination={userDestination} />
-            </View>
-=======
            <View style = {styles.mapview}>
                <MapComponent  userOrigin={userOrigin} userDestination={userDestination}  />
            </View>
->>>>>>> 5805412866470e65b73a722b756d2336d71d6f5a
 
             <BottomSheet
                 ref={bottomSheet1}
