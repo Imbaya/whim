@@ -1,3 +1,6 @@
+import { InitialState } from "../actions/action"
+
+
 export const OriginReducer = (state,action)=>{
     switch(action.type){
         case 'ADD_ORIGIN':
@@ -25,4 +28,35 @@ export const DestinationReducer = (state,action)=>{
                 return state
     }
 }
+
+export const requestDriver = (state = InitialState,action)=>{
+    switch(action.type){
+        case 'REQUEST_DRIVER' :
+            return{
+                ...state,
+                loading: true
+            }
+    }
+}
+
+export const requestDriverSuccess = (state = InitialState,action)=>{
+    switch(action.type){
+        case 'REQUEST_DRIVER_SUCCESS' :
+            return{
+                loading: false,
+                driver : payload.driver 
+            }
+    }
+}
+
+export const requestDriverFaluire = (state = InitialState,action)=>{
+    switch(action.type){
+        case 'REQUEST_DRIVER_FAILURE' :
+            return{
+                loading: false,
+                error: payload.error
+            }
+    }
+}
+
 
